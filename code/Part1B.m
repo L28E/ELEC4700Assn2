@@ -1,3 +1,6 @@
+close all;
+clear;
+
 w=2;
 l=3;
 dx=0.05;
@@ -53,13 +56,14 @@ for x=1:nx
     end      
 end 
 
-figure();
+figure(1);
+subplot(1,2,1);
 surf(v_surf','EdgeColor','none');
 title('Q1B: Numerical Solution' );
 ylabel('W');
 xlabel('L');
-c=colorbar;
-c.Label.String = 'Volts';
+colorbar;
+
 
 % Analytical Solution
 v_analytic=zeros(nx,ny);
@@ -75,12 +79,10 @@ for i=1:nx
     end
 end
 
-figure();
+subplot(1,2,2);
 surf(v_analytic','EdgeColor','none');
 title('Q1B: Analytical Solution' );
 ylabel('W');
 xlabel('L');
-c=colorbar;
-c.Label.String = 'Volts';
-
+colorbar;
 

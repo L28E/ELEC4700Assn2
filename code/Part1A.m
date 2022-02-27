@@ -1,3 +1,6 @@
+close all;
+clear;
+
 w=2;
 l=3;
 dx=0.05;
@@ -24,7 +27,7 @@ for x=1:nx
             G(n,n)=1; 
         else               
             % For the rest of the G matrix, populate using finite difference
-            G(n,n)=-2*(1/dx^2 +1/dy^2);      % Relation to self (n?)
+            G(n,n)=-2*(1/dx^2+1/dy^2);      
             G(n,n+1)=1/(dx^2);     % Relation to the node to the right (nxp)
             G(n,n-1)=1/(dx^2);     % Relation to the node to the left (nxm) 
             G(n,n+ny)=1/(dy^2);    % Relation to the node above (nyp)
@@ -57,5 +60,4 @@ surf(v_surf','EdgeColor','none');
 title('Q1A' );
 ylabel('W');
 xlabel('L');
-c=colorbar;
-c.Label.String = 'Volts';
+colorbar;
