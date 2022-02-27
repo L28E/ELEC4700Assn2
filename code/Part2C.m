@@ -98,46 +98,47 @@ for m=1:length(width)
         n = y + (x - 1) * ny;
         v_surf(x,y)=V(n);
       end      
-  end 
-
-  % conductivity Plot 
-  figure()
-  subplot(2,2,1);
-  surf(cMap','EdgeColor','none');
-  title('σ(x,y)');
-  ylabel('W');
-  xlabel('L');
-
-  % Voltage Plot 
-  subplot(2,2,2);
-  surf(v_surf','EdgeColor','none');
-  title('V(x,y)');
-  ylabel('W');
-  xlabel('L');
-
-  % E field Plot 
+  end
+  
   [Ex,Ey]=gradient(-v_surf');
-  subplot(2,2,3);
-  quiver(Ex,Ey);
-  title('E(x,y)' );
-  ylabel('W');
-  xlabel('L');
-
-  % Current Density plot 
-  subplot(2,2,4);
   Jx=cMap'.*Ex;
   Jy=cMap'.*Ey;
-  quiver(Jx,Jy);
-  title('J(x,y)' );
-  ylabel('W');
-  xlabel('L');
+  
+%   % conductivity Plot 
+%   figure()
+%   subplot(2,2,1);
+%   surf(cMap','EdgeColor','none');
+%   title('σ(x,y)');
+%   ylabel('W');
+%   xlabel('L');
+% 
+%   % Voltage Plot 
+%   subplot(2,2,2);
+%   surf(v_surf','EdgeColor','none');
+%   title('V(x,y)');
+%   ylabel('W');
+%   xlabel('L');
+% 
+%   % E field Plot   
+%   subplot(2,2,3);
+%   quiver(Ex,Ey);
+%   title('E(x,y)' );
+%   ylabel('W');
+%   xlabel('L');
+% 
+%   % Current Density plot 
+%   subplot(2,2,4);  
+%   quiver(Jx,Jy);
+%   title('J(x,y)' );
+%   ylabel('W');
+%   xlabel('L');
 
   % Calculate Current
   eFlowx = cMap' .* Ex;
   eFlowy = cMap' .* Ey;
 
-  C0 = sum(eFlowx'(1, :))
-  Cnx = sum(eFlowx'(nx, :))
+  C0 = sum(eFlowx(:,1))
+  Cnx = sum(eFlowx(:,nx))
   Curr(m) = (C0 + Cnx) * 0.5;
   size(m)=nx*ny;
 

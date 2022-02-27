@@ -126,6 +126,6 @@ xlabel('L');
 eFlowx = cMap' .* Ex;
 eFlowy = cMap' .* Ey;
 
-C0 = sum(eFlowx'(1, :))
-Cnx = sum(eFlowx'(nx, :))
+C0 = sum(eFlowx(:,1))
+Cnx = sum(eFlowx(:,nx))
 Curr = (C0 + Cnx) * 0.5
